@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SummaryReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1be7dd99-ab85-4263-87e2-78074533008f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TestCaseRunnerDataSource"/>
+	<subDataset name="STEP_DATASET" uuid="618b1254-78e5-4bca-9244-8af4af261585">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TestCaseRunnerDataSource"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="testStepResult" class="com.eviware.soapui.model.testsuite.TestStepResult">
+			<fieldDescription><![CDATA[testStepResult]]></fieldDescription>
+		</field>
+		<field name="messages" class="java.lang.String">
+			<fieldDescription><![CDATA[messages]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="REPORT_TITLE" class="java.lang.String"/>
+	<parameter name="SUITE_TIME_TAKEN" class="java.lang.String"/>
+	<parameter name="SUITE_START_TIME" class="java.lang.String"/>
+	<parameter name="SUITE_END_TIME" class="java.lang.String"/>
+	<parameter name="TEST_SUITE_RUNNER" class="com.eviware.soapui.model.testsuite.TestSuiteRunner"/>
+	<parameter name="TOTAL_TC" class="java.lang.Integer"/>
+	<parameter name="PASS_COUNT" class="java.lang.Integer"/>
+	<parameter name="FAIL_COUNT" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="testCaseRunner" class="com.eviware.soapui.model.testsuite.TestCaseRunner">
+		<fieldDescription><![CDATA[testCaseRunner]]></fieldDescription>
+	</field>
+	<field name="testStepResultsAsDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<fieldDescription><![CDATA[testStepResultsAsDataSource]]></fieldDescription>
+	</field>
+	<field name="testStartTime" class="java.lang.Long">
+		<fieldDescription><![CDATA[testStartTime]]></fieldDescription>
+	</field>
+	<sortField name="testStartTime"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="135" y="10" width="285" height="37" uuid="10dc3274-af3b-4b34-aca2-e6446b2d9b61"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_TITLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="79" width="190" height="21" uuid="9da98287-2caa-4c57-97e1-1e96cceb4780"/>
+				<textFieldExpression><![CDATA["Time Taken : "+String.valueOf($P{TEST_SUITE_RUNNER}.getTimeTaken()/1000)+" seconds"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="79" width="190" height="21" uuid="0cc5f099-3c3d-4726-a5f0-b3f83ae90af2"/>
+				<textFieldExpression><![CDATA["Start Time : "+new Date($P{TEST_SUITE_RUNNER}.getStartTime()).toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="79" width="170" height="21" uuid="80a241fa-e156-42d7-a7a5-a4945ab6e0f5"/>
+				<textFieldExpression><![CDATA["End Time : "+new Date($P{TEST_SUITE_RUNNER}.getStartTime()+$P{TEST_SUITE_RUNNER}.getTimeTaken()).toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="54" width="190" height="21" uuid="b59b22cb-648b-45f5-bad8-90c82c92a727"/>
+				<textFieldExpression><![CDATA["Total Cases : "+$P{TOTAL_TC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="54" width="190" height="21" uuid="5c40f884-7a8a-4124-959d-2f3bdf8ebeb0"/>
+				<textFieldExpression><![CDATA["Pass Count : "+$P{PASS_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="54" width="170" height="21" uuid="c3ff8aaa-3d3d-477b-a648-4d01c05e674c"/>
+				<textFieldExpression><![CDATA["Fail Count : "+$P{FAIL_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="105" width="560" height="1" uuid="44ccb6ab-f2d5-4893-9875-1a2a6774ebcf"/>
+			</line>
+			<line>
+				<reportElement x="2" y="47" width="560" height="1" uuid="989054ba-225a-4683-b78f-43c8ffc571d0"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="79" width="190" height="21" uuid="d695eff3-1e23-4dab-b5c6-1ae93da54c57"/>
+				<textFieldExpression><![CDATA["Time Taken : "+String.valueOf($P{TEST_SUITE_RUNNER}.getTimeTaken()/1000)+" seconds"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="79" width="190" height="21" uuid="73d22bcd-1c90-45e8-8dad-4659cf9bbeea"/>
+				<textFieldExpression><![CDATA["Start Time : "+new Date($P{TEST_SUITE_RUNNER}.getStartTime()).toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="79" width="170" height="21" uuid="096ed104-a464-46ae-a921-ec852ebc9f98"/>
+				<textFieldExpression><![CDATA["End Time : "+new Date($P{TEST_SUITE_RUNNER}.getStartTime()+$P{TEST_SUITE_RUNNER}.getTimeTaken()).toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="54" width="190" height="21" uuid="e961c1d3-ff52-49c5-a577-48d9d03790fc"/>
+				<textFieldExpression><![CDATA["Total Cases : "+$P{TOTAL_TC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="54" width="190" height="21" uuid="9c64f06b-1d26-4ab0-bae3-d3a2d99c69c7"/>
+				<textFieldExpression><![CDATA["Pass Count : "+$P{PASS_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="54" width="170" height="21" uuid="a199b1a4-48d1-4799-8668-5b253af668e9"/>
+				<textFieldExpression><![CDATA["Fail Count : "+$P{FAIL_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="105" width="560" height="1" uuid="81fcba0b-11e9-4382-a09e-5cf435c05baf"/>
+			</line>
+			<line>
+				<reportElement x="2" y="47" width="560" height="1" uuid="e28d3574-f37b-4ef5-b3ff-15ea79c35da8"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="64" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+			<textField>
+				<reportElement x="8" y="4" width="172" height="20" uuid="451a7421-5318-4c17-af5c-e24d265263c7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c978ebb6-c920-4cd7-8100-4db85bfd39e6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{testCaseRunner}.getTestCase().getName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="4" width="66" height="20" uuid="41d4f833-5d1c-4a9c-860f-002d50e98ef3"/>
+				<textFieldExpression><![CDATA[$F{testCaseRunner}.getStatus()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="4" width="160" height="20" uuid="be8e31e6-e195-4681-95c4-03df992ef5c4"/>
+				<textFieldExpression><![CDATA[new Date($F{testCaseRunner}.getStartTime()).toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="4" width="100" height="20" uuid="409277cc-f970-4752-8870-aeb0ebd528d7"/>
+				<textFieldExpression><![CDATA[String.valueOf($F{testCaseRunner}.getTimeTaken()/1000)+" seconds"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="22" y="28" width="538" height="26" uuid="4dec9b3a-906e-43c2-8a62-f709d7510cb1"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="STEP_DATASET" uuid="c95925ef-40d7-4211-8fa6-1cba5ffd20ae">
+						<dataSourceExpression><![CDATA[$F{testStepResultsAsDataSource}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="26" width="538">
+						<textField>
+							<reportElement x="25" y="2" width="100" height="24" uuid="8648419c-9350-4333-adf5-bb88ee37a509"/>
+							<textFieldExpression><![CDATA[$F{testStepResult}.getTestStep().getName()]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="132" y="2" width="100" height="24" uuid="acdd6637-91eb-4ac2-80bc-25285b49b565"/>
+							<textFieldExpression><![CDATA[$F{testStepResult}.getStatus()]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="241" y="2" width="289" height="24" uuid="cbef1f1c-6a6b-49f9-a67f-1de18452e54b"/>
+							<textFieldExpression><![CDATA[$F{messages}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<line>
+				<reportElement x="0" y="2" width="560" height="1" uuid="87153ee8-725b-4dd5-9c18-336ea0eb8d9b"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
