@@ -12,4 +12,4 @@ Note : Start SoapUI with administrative privileges. Administrator priviliges req
 
 # How to build
 1. Add http://www.soapui.org/repository/maven2/ to maven repository before starting the build. This is required to get SoapUI dependencies.
-2. Run mvn clean install to build.
+2. Run mvn clean install.
